@@ -67,6 +67,10 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
             _cubicIntensity = newValue.clamped(to: 0.05...1)
         }
     }
+
+    public var isDrawLineWithGradientEnabled: Bool = false
+
+    public var gradientPositions: [CGFloat]?
         
     /// The radius of the drawn circles.
     open var circleRadius = CGFloat(8.0)
@@ -75,7 +79,7 @@ open class LineChartDataSet: LineRadarChartDataSet, ILineChartDataSet
     open var circleHoleRadius = CGFloat(4.0)
     
     open var circleColors = [NSUIColor]()
-    
+
     /// - Returns: The color at the given index of the DataSet's circle-color array.
     /// Performs a IndexOutOfBounds check by modulus.
     open func getCircleColor(atIndex index: Int) -> NSUIColor?
