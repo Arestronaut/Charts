@@ -823,10 +823,12 @@ open class LineChartRenderer: LineRadarRenderer
         let gradientColorComponents: [CGFloat] = dataSet.colors
             .reversed()
             .reduce(into: []) { (components, color) in
-                guard let (r, g, b, a) = color.nsuirgba else {
-                    return
-                }
-                components += [r, g, b, a]
+                var red: CGFloat = 0.0
+                var green: CGFloat = 0.0
+                var blue: CGFloat = 0.0
+                var alpha: CGFloat = 0.0
+                guard color.getRed(.init(&red), green: .init(&green), blue: .init(&blue), alpha: .init(&alpha)) else { return }
+                components += [red, green, blue, alpha]
         }
         let gradientLocations: [CGFloat] = gradientPositions.reversed()
             .map { (position) in
